@@ -4,6 +4,8 @@ This repository contains a python script that uses a dictionary to create a regu
 ## Instructions for use
 This script depends on a dictionary file (which I've included here as "dictionary_terms.txt"), which is simply a plain-text file with a single term on a line by itself. CAUTION: Be absolutely sure your dictionary does not contain any terms that might be interpreted as a regular expression! If it does, the script will break.
 
+Also be very sure that your dictionary does not include any terms that are used by the "phrase_tokenier" or "sent_tokenizer" functions! This can cause the <w> tag to be split across phrases/sentences and break the output.
+
 Place the file you want to tokenize in the same folder as the script and the dictionary file. Specify the appropriate filenames within the script and then you ready to go! Simply navigate to the folder in your terminal and run the code.
 
 If you want to take advantage of the stanza parser, you will need to install it via pip and then download the Chinese tokenization module (stanza.download('zh-hant')). Note that Stanza does have a classical Chinese segementer, but it is trained on extremely old texts and tends to tokenize into individual characters (as one might expect on a model trained early Chinese writing). But you can simply switch ot "zh-hant" here (and in the nlp object instantiation) with "lzh". You will need to uncomment the import statement, the line instantiating the model, and then uncomment 
@@ -22,7 +24,7 @@ This duplication will be refactored out later, but I just hacked this together, 
 
 
 ## A few quick notes
-The bigger your dictionary, the slower the code will run, but the more accurate it will be! The demo setup I have here contains a relatively small dictionary of about 1400 terms. Parsing the sample text (which is around 300,000 characters, or about half the length of the Romance of the Three Kingdoms) into individual characters takes around .45 seconds on my (relatively fast) computer. When using the stanza parser this shoots up to about 175 seconds. 
+The bigger your dictionary, the slower the code will run, but the more accurate it will be! The demo setup I have here contains a relatively small dictionary of about 24k terms. Parsing the sample text (which is around 300,000 characters, or about half the length of the Romance of the Three Kingdoms) into individual characters takes around 9 seconds on my (relatively fast) computer. When using the stanza parser this takes longer. 
 
 With a much more extensive dictionary of around 90k, parsing the same text (and turning unknown sequences into individual characters) takes about 28 seconds. Using the stanza parser, however, only increases the time to 30 seconds (resulting in a pretty good final product) as there is much less text to chew through.
 
