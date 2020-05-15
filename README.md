@@ -7,11 +7,17 @@ This script depends on a dictionary file (which I've included here as "dictionar
 Place the file you want to tokenize in the same folder as the script and the dictionary file. Specify the appropriate filenames within the script and then you ready to go! Simply navigate to the folder in your terminal and run the code.
 
 If you want to take advantage of the stanza parser, you will need to install it via pip and then download the Chinese tokenization module (stanza.download('zh-hant')). Note that Stanza does have a classical Chinese segementer, but it is trained on extremely old texts and tends to tokenize into individual characters (as one might expect on a model trained early Chinese writing). But you can simply switch ot "zh-hant" here (and in the nlp object instantiation) with "lzh". You will need to uncomment the import statement, the line instantiating the model, and then uncomment 
+
 temp_words.extend([w.text for w in nlp(chunk).sentences[0].words]) and
+
 temp_words.extend([w.text for w in nlp(phrase).sentences[0].words])
+
 and comment out
+
 temp_words.extend(list(chunk)) and
+
 temp_words.extend(list(phrase))
+
 This duplication will be refactored out later, but I just hacked this together, so apologies for that!
 
 
