@@ -21,10 +21,12 @@ temp_words.extend(list(phrase))
 This duplication will be refactored out later, but I just hacked this together, so apologies for that!
 
 
-## A quick note on parsing speed:
+## A few quick notes
 The bigger your dictionary, the slower the code will run, but the more accurate it will be! The demo setup I have here contains a relatively small dictionary of about 1400 terms. Parsing the sample text (which is around 300,000 characters, or about half the length of the Romance of the Three Kingdoms) into individual characters takes around .45 seconds on my (relatively fast) computer. When using the stanza parser this shoots up to about 175 seconds. 
 
 With a much more extensive dictionary of around 90k, parsing the same text (and turning unknown sequences into individual characters) takes about 28 seconds. Using the stanza parser, however, only increases the time to 30 seconds (resulting in a pretty good final product) as there is much less text to chew through.
+
+Some of the behavior in this script is based on the format of Kanseki Repository documents and may need some editing to completely work with your input texts.
 
 ## Input data info
 The demo text comes from Christian Wittern's Kanskei Repository, and is the first text in the Buddhist text section:
